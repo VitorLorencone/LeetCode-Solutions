@@ -5,7 +5,7 @@ Memory Complexity: O(1)
 
 Something interesting is that this algorithm has a specific name and creators, it's called 
 the Boyer Moore majority voting algorithm and it's amazing for achieving this result of time 
-and memory complexity. Its operation is quite simple, yet ingenious.
+and memory complexity. Its operation is quite simple, yet ingenious
 
 */
 

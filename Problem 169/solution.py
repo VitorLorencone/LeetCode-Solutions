@@ -2,7 +2,7 @@
 
 Time Complexity: nlog(n) - worst
 
-Solution with only one line.
+Solution with only one line
 
 """
 
