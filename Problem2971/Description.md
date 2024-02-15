@@ -1,41 +1,41 @@
 
-# **[2149. Rearrange Array Elements by Sign](https://leetcode.com/problems/rearrange-array-elements-by-sign/description/)**
+# **[2971. Find Polygon With the Largest Perimeter](https://leetcode.com/problems/find-polygon-with-the-largest-perimeter/description/)**
 
-You are given a **0-indexed** integer array `nums` of **even** length consisting of an **equal** number of positive and negative integers.
+You are given an array of **positive** integers `nums` of length `n`.
 
-You should **rearrange** the elements of `nums` such that the modified array follows the given conditions:
+A **polygon** is a closed plane figure that has at least `3` sides. The **longest side** of a polygon is **smaller** than the sum of its other sides.
 
-1. Every **consecutive pair** of integers have **opposite signs.**
-2. For all integers with the same sign, the **order** in which they were present in `nums` is **preserved.**
-3. The rearranged array begins with a positive integer.
+Conversely, if you have `k` (`k >= 3`) **positive** real numbers `a1`, `a2`, `a3`, ..., `ak` where `a1 <= a2 <= a3 <= ... <= ak` **and** `a1 + a2 + a3 + ... + ak-1 > ak`, then there **always** exists a polygon with `k` sides whose lengths are `a1`, `a2`, `a3`, ..., `ak`.
 
-Return *the modified array after rearranging the elements to satisfy the aforementioned conditions.*
+The **perimeter** of a polygon is the sum of lengths of its sides.
+
+Return *the **largest** possible **perimeter** of a **polygon** whose sides can be formed from* `nums`*, or *`-1`* if it is not possible to create a polygon.*
 
 
 **Example 1:**
 
-> **Input:** nums = [3,1,-2,-5,2,-4]  
-> **Output:** [3,-2,1,-5,2,-4]  
-> **Explanation:**  
-> The positive integers in nums are [3,1,2]. The negative integers are [-2,-5,-4].  
-> The only possible way to rearrange them such that they satisfy all conditions is [3,-2,1,-5,2,-4].  
-> Other ways such as [1,-2,2,-5,3,-4], [3,1,2,-2,-5,-4], [-2,3,-5,1,-4,2] are incorrect because they do not satisfy one or more conditions.    
+> **Input:** nums = [5,5,5]  
+> **Output:** 15  
+> **Explanation:**
+> The only possible polygon that can be made from nums has 3 sides: 5, 5, and 5. The perimeter is 5 + 5 + 5 = 15.      
 
 **Example 2:**
 
-> **Input:** nums = [-1,1]  
-> **Output:** [1,-1]  
-> **Explanation:**  
-> 1 is the only positive integer and -1 the only negative integer in nums.  
-> So nums is rearranged to [1,-1].  
- 
+> **Input:** nums = [1,12,1,2,5,50,3]   
+> **Output:** 12  
+> **Explanation:**
+> The polygon with the largest perimeter which can be made from nums has 5 sides: 1, 1, 2, 3, and 5. The perimeter is 1 + 1 + 2 + 3 + 5 = 12.  
+> We cannot have a polygon with either 12 or 50 as the longest side because it is not possible to include 2 or more smaller sides that have a greater sum than either of them.  
+> It can be shown that the largest possible perimeter is 12. 
+
+**Example 3:**
+
+> **Input:** nums = [5,5,50]  
+> **Output:** -1  
+> **Explanation:**
+> There is no possible way to form a polygon from nums, as a polygon has at least 3 sides and 50 > 5 + 5.
 
 **Constraints:**
 
-- `2 <= nums.length <= 2 * 10⁵`
-- `nums.length` is **even**
-- `1 <= |nums[i]| <= 10⁵`
-- `nums` consists of **equal** number of positive and negative integers.
- 
-
-It is not required to do the modifications in-place.
+- `3 <= n <= 10⁵`
+- `1 <= nums[i] <= 10⁹`
