@@ -19,7 +19,7 @@ The majority element is the element that appears more than `⌊n / 2⌋` times. 
 **Constraints:**
 
 - `n == nums.length`
-- `1 <= n <= 5 * 104`
+- `1 <= n <= 5 * 10⁴`
 - `10⁻⁹ <= nums[i] <= 10⁹`
  
 
