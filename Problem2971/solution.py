@@ -1,42 +1,26 @@
 """
 
-Time Complexity: O(n)
-Space Complexity: O(n)
+Time Complexity: O(nlog(n))
+Space Complexity: O(1)
 
-Solution using deque like a queue for O(1) append and pop and to keep elements in order.
-The ideia uses a waiting queue, to keep the other sign elements in there, while the solution comes up in order.
+Solution using the python sort, with n*log(n) complexity and greedy algorithm in O(n).
+It was improved in the .cpp file
 
 """
 
-from collections import deque
-
-def numSign(n:int) -> bool:
-    if n >= 0:
-        return 1
-    return -1
-
 class Solution:
-    def rearrangeArray(self, nums: list[int]) -> list[int]:
-        sign:int = 1
-        solution:list = []
-        waiting = deque()
-
-        for i in nums:
-            if len(waiting) > 0 and sign == numSign(waiting[0]):
-                solution.append(waiting[0])
-                waiting.popleft()
-                sign *= -1
-            if sign == numSign(i):
-                solution.append(i)
-                sign *= -1
-            else:
-                waiting.append(i)
-
-        if len(waiting) > 0:
-            solution.append(waiting[0])
-
-        return solution
+    def largestPerimeter(self, nums: list[int]) -> int:
+        s = 0
+        nums.sort()
+        
+        for i in range(len(nums)-2):
+            for j in range(len(nums)-i-1):
+                s += nums[j]
+            if s > nums[-i-1]:
+                return s+nums[-i-1]
+            s = 0
+        return -1
     
 sol:Solution = Solution()
-prob:list[int] = [3, 1, -2, -5, 2, -4]
-print(sol.rearrangeArray(prob))
+prob:list[int] = [1,12,1,2,5,50,3]
+print(sol.largestPerimeter(prob))

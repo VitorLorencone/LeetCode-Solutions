@@ -1,7 +1,7 @@
 /* 
 
 Time Complexity: O(n)
-Memory Complexity: O(1)
+Space Complexity: O(1)
 
 Something interesting is that this algorithm has a specific name and creators, it's called 
 the Boyer Moore majority voting algorithm and it's amazing for achieving this result of time 
