@@ -1,26 +1,43 @@
 """
+let n be len(heights)
+let k be len(p)
 
-Time Complexity: O(nlog(n))
-Space Complexity: O(1)
+Time Complexity: O(n*log(k))
+Space Complexity: O(k)
 
-Solution using the python sort, with n*log(n) complexity and greedy algorithm in O(n).
-It was improved in the .cpp file
+Solution using the python priority queue to storage elements we will need to access
+in a certain order. The heapq.heappush(p, -difference) helps in ordering the queue in
+the opposite order so we can use heapq.heappop(p) correctly. Since heap.heappush and
+heap.heappop() have O(log(k)) time complexity, then we could measure the above complexity.
 
 """
+import heapq
 
 class Solution:
-    def largestPerimeter(self, nums: list[int]) -> int:
-        s = 0
-        nums.sort()
-        
-        for i in range(len(nums)-2):
-            for j in range(len(nums)-i-1):
-                s += nums[j]
-            if s > nums[-i-1]:
-                return s+nums[-i-1]
-            s = 0
-        return -1
+    def furthestBuilding(self, heights: list[int], bricks: int, ladders: int) -> int:
+        p:heapq = []
+        difference:int = 0
+        count:int = 0
+
+        for i in range(len(heights) - 1):
+            difference = heights[i+1] - heights[i]
+            if(difference <= 0):
+                count += 1
+                continue
+            bricks -= difference
+            heapq.heappush(p, -difference)
+            if bricks < 0:
+                bricks += -heapq.heappop(p)
+                ladders -= 1
+            if ladders < 0:
+                break
+            count += 1
+
+            print(p)
+        return count
     
 sol:Solution = Solution()
-prob:list[int] = [1,12,1,2,5,50,3]
-print(sol.largestPerimeter(prob))
+prob1:list[int] = [4,12,2,7,3,18,20,3,19]
+prob2:int = 10
+prob3:int = 2
+print(sol.furthestBuilding(prob1, prob2, prob3))
