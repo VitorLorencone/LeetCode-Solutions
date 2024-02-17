@@ -8,7 +8,7 @@ Space Complexity: O(k)
 Solution using the python priority queue to storage elements we will need to access
 in a certain order. The heapq.heappush(p, -difference) helps in ordering the queue in
 the opposite order so we can use heapq.heappop(p) correctly. Since heap.heappush and
-heap.heappop() have O(log(k)) time complexity, then we could measure the above complexity.
+heap.heappop() have O(log(k)) time complexity, then we could measure the above complexity
 
 """
 import heapq
