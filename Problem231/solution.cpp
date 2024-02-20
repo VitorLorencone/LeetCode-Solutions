@@ -1,37 +1,33 @@
 /* 
 
-Time Complexity: O(1)
+Time Complexity: O(n)
 Space Complexity: O(1)
 
-A very simple solution using bitwise operations. Since every power of 2 has only one binary digit
-at the very start of the number and n-1 will have a bunch of 1's, starting with a zero, because of
-the binary subtraction, than, the bitwise & will always be 0 if the number is a power of 2 and any 
-number otherwise.
-
-Example:
-16 -> 10000
-16-1 = 15 -> 01111
-16 & 15 = 10000 & 01111 = 00000 = 0
+A very simple solution calculating the max sum and the subtracting each value in nums
+this way, the remaining number at the end of the for loop is our answer.
 
 */
 
 #include <iostream>
+#include <vector>
 
 class Solution {
 public:
-    bool isPowerOfTwo(int n) {
-        if(n <= 0){return false;}
-        return (n&(n-1)) == 0;
+    int missingNumber(std::vector<int>& nums) {
+        int n = nums.size();
+        int total = (n*(n+1))/2;
+        for(int i = 0; i < n; i++){
+            total -= nums[i];
+        }
+        return total;
     }
 };
 
 int main(){
 
     Solution sol = Solution();
-    int prob = 32;
-    int prob2 = 33;
+    std::vector<int> prob = {9,6,4,2,3,5,7,0,1};
 
-    std::cout << sol.isPowerOfTwo(prob) << std::endl;
-    std::cout << sol.isPowerOfTwo(prob2) << std::endl;
+    std::cout << sol.missingNumber(prob) << std::endl;
 
 }
