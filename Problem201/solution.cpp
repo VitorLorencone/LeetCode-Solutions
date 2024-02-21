@@ -1,37 +1,40 @@
 /* 
 
-Time Complexity: O(1)
+Time Complexity: O(log(n))
 Space Complexity: O(1)
 
-A very simple solution using bitwise operations. Since every power of 2 has only one binary digit
-at the very start of the number and n-1 will have a bunch of 1's, starting with a zero, because of
-the binary subtraction, than, the bitwise & will always be 0 if the number is a power of 2 and any 
-number otherwise.
-
-Example:
-16 -> 10000
-16-1 = 15 -> 01111
-16 & 15 = 10000 & 01111 = 00000 = 0
+A very simple solution using bitwise operations. It strarts checking for special cases, including one that
+searches for a power of 2 and the goes with a fast calculation using O(log(n)) time complexity.
 
 */
 
 #include <iostream>
+#include <math.h>
 
 class Solution {
 public:
-    bool isPowerOfTwo(int n) {
-        if(n <= 0){return false;}
-        return (n&(n-1)) == 0;
+    int rangeBitwiseAnd(int left, int right) {
+
+        if(left == right){return left;}
+        if(left == 0){return 0;}
+        if(log(right)/log(2) - log(left)/log(2) >= 1 || (right&(right-1)) == 0){return 0;}
+
+        int pos=0;
+        while(left!=right){
+            left>>=1;
+            right>>=1;
+            pos++;
+        }
+        return left<<pos;
     }
 };
 
 int main(){
 
     Solution sol = Solution();
-    int prob = 32;
-    int prob2 = 33;
+    int l = 5;
+    int r = 7;
 
-    std::cout << sol.isPowerOfTwo(prob) << std::endl;
-    std::cout << sol.isPowerOfTwo(prob2) << std::endl;
+    std::cout << sol.rangeBitwiseAnd(l,r) << std::endl;
 
 }
