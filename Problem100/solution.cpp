@@ -1,42 +1,55 @@
 /* 
+Let n be the number of nodes in the tree and h be the height of the tree
 
 Time Complexity: O(n)
-Space Complexity: O(1)
+Space Complexity: O(h)
 
-Something interesting is that this algorithm has a specific name and creators, it's called 
-the Boyer Moore majority voting algorithm and it's amazing for achieving this result of time 
-and memory complexity. Its operation is quite simple, yet ingenious
+A simple and easy recursive solution.
 
 */
 
-#include <vector>
 #include <iostream>
 using namespace std;
 
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
 class Solution {
 public:
-    int majorityElement(vector<int>& nums) {
-        int c = 0, m = 0;
-
-        for(int i = 0; i < nums.size(); i++){
-            if(c == 0){
-                m = nums[i];
-                c = 1;
-            }else if(m == nums[i]){
-                c++;
-            }else{
-                c--;
-            }
+    bool isSameTree(TreeNode* p, TreeNode* q){
+        if(p == nullptr && q == nullptr){
+            return true;
+        }else if(p == nullptr || q == nullptr){
+            return false;
         }
-        return m;
+        return p->val == q->val && isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
     }
 };
 
 int main(){
 
     Solution sol = Solution();
-    vector<int> prob = {2,2,1,1,1,2,2};
+    TreeNode* p = new TreeNode(1, new TreeNode(2), new TreeNode(3));
+    TreeNode* q = new TreeNode(1, new TreeNode(2), new TreeNode(3));
 
-    cout << sol.majorityElement(prob) << endl; // returns 2
+    cout << sol.isSameTree(p, q) << endl;
+
+    p = new TreeNode(1, new TreeNode(2), nullptr);
+    q = new TreeNode(1, nullptr, new TreeNode(2));
+
+    cout << sol.isSameTree(p, q) << endl;
+
+    delete p->right;
+    delete p->left;
+    delete p;
+    delete q->right;
+    delete q->left;
+    delete q;
 
 }
