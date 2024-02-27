@@ -1,10 +1,11 @@
-"""
-Time Complexity: O(n)
-Space Complexity: O(1)
+""" 
+Let n be the number of nodes in the tree and h be the height of the tree
 
-Something interesting is that this algorithm has a specific name and creators, it's called 
-the Boyer Moore majority voting algorithm and it's amazing for achieving this result of time 
-and memory complexity. Its operation is quite simple, yet ingenious
+Time Complexity: O(n)
+Space Complexity: O(h)
+
+A simple and easy recursive solution.
+
 """
 
 class TreeNode:

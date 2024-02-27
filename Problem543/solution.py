@@ -1,10 +1,11 @@
 """
-Time Complexity: O(n)
-Space Complexity: O(1)
+Let n be the number of nodes in the tree
 
-Something interesting is that this algorithm has a specific name and creators, it's called 
-the Boyer Moore majority voting algorithm and it's amazing for achieving this result of time 
-and memory complexity. Its operation is quite simple, yet ingenious
+Time Complexity: O(n)
+Space Complexity: O(n)
+
+Solution with a recursive dfs.
+
 """
 
 class TreeNode:
@@ -14,19 +15,19 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
-        if p is None and q is None:
-            return True
-        elif p is None or q is None:
-            return False
-    
-        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right) and p.val == q.val
+    def diameterOfBinaryTree(self, root: TreeNode) -> int:
+        self.res = 0
+        def dfs(node):
+            if not node:
+                return 0
+            
+            left = dfs(node.left) 
+            right = dfs(node.right)
+            self.res = max(self.res, left+right)
+            return 1 + max(left, right)
+        dfs(root)
+        return self.res
     
 sol:Solution = Solution()
-p = TreeNode(1, TreeNode(2), TreeNode(3))
-q = TreeNode(1, TreeNode(2), TreeNode(3))
-print(sol.isSameTree(p, q))
-
-p = TreeNode(1, None, TreeNode(2))
-q = TreeNode(1, TreeNode(2), None)
-print(sol.isSameTree(p, q))
+p = TreeNode(1, TreeNode(2, TreeNode(4), TreeNode(5)), TreeNode(3))
+print(sol.diameterOfBinaryTree(p))
