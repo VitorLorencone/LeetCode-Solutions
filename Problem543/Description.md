@@ -1,32 +1,25 @@
-# **[100. Same Tree](https://leetcode.com/problems/same-tree/description/)**
+# **[543. Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/description/)**
 
-Given the roots of two binary trees `p` and `q`, write a function to check if they are the same or not.
+Given the `root` of a binary tree, return *the length of the **diameter** of the tree.*
 
-Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
+The **diameter** of a binary tree is the **length** of the longest path between any two nodes in a tree. This path may or may not pass through the `root`.
+
+The **length** of a path between two nodes is represented by the number of edges between them.
 
 **Example 1:**
 
-![ex1](https://assets.leetcode.com/uploads/2020/12/20/ex1.jpg)
+![ex1](https://assets.leetcode.com/uploads/2021/03/06/diamtree.jpg)
 
-> **Input:** p = [1,2,3], q = [1,2,3]  
-> **Output:** true
+> **Input:** root = [1,2,3,4,5]  
+> **Output:** 3  
+> **Explanation:** 3 is the length of the path [4,2,1,3] or [5,2,1,3].
 
 **Example 2:**
 
-![ex2](https://assets.leetcode.com/uploads/2020/12/20/ex2.jpg)
-
-> **Input:** p = [1,2], q = [1,null,2]  
-> **Output:** false
- 
-**Example 3:**
-
-![ex3](https://assets.leetcode.com/uploads/2020/12/20/ex3.jpg)
-
-> **Input:** p = [1,2,1], q = [1,1,2]  
-> **Output:** false  
-
+> **Input:** root = [1, 2]  
+> **Output:** 1
 
 **Constraints:**
 
-- The number of nodes in both trees is in the range `[0, 100]`.
-- `-10^4 <= Node.val <= 10^4`
+- The number of nodes in the tree is in the range `[1, 10^4]`.
+- `-100 <= Node.val <= 100`

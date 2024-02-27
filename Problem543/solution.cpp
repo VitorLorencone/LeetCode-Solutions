@@ -1,10 +1,10 @@
 /* 
-Let n be the number of nodes in the tree and h be the height of the tree
+Let n be the number of nodes in the tree
 
 Time Complexity: O(n)
-Space Complexity: O(h)
+Space Complexity: O(n)
 
-A simple and easy recursive solution.
+Solution with a recursive dfs.
 
 */
 
@@ -22,34 +22,33 @@ struct TreeNode {
 
 class Solution {
 public:
-    bool isSameTree(TreeNode* p, TreeNode* q){
-        if(p == nullptr && q == nullptr){
-            return true;
-        }else if(p == nullptr || q == nullptr){
-            return false;
+    int res = 0;
+
+    int dfs(TreeNode* node){
+        if(node == nullptr){
+            return 0;
         }
-        return p->val == q->val && isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+        int left = dfs(node->left);
+        int right = dfs(node->right);
+        res = max(res, left+right);
+        return 1 + max(left, right);
+    }
+
+    int diameterOfBinaryTree(TreeNode* root) {
+        dfs(root);
+        return res;
     }
 };
 
 int main(){
 
     Solution sol = Solution();
-    TreeNode* p = new TreeNode(1, new TreeNode(2), new TreeNode(3));
-    TreeNode* q = new TreeNode(1, new TreeNode(2), new TreeNode(3));
+    TreeNode* p = new TreeNode(1, new TreeNode(2, new TreeNode(4), new TreeNode(5)), new TreeNode(3));
 
-    cout << sol.isSameTree(p, q) << endl;
-
-    p = new TreeNode(1, new TreeNode(2), nullptr);
-    q = new TreeNode(1, nullptr, new TreeNode(2));
-
-    cout << sol.isSameTree(p, q) << endl;
+    cout << sol.diameterOfBinaryTree(p) << endl;
 
     delete p->right;
     delete p->left;
     delete p;
-    delete q->right;
-    delete q->left;
-    delete q;
 
 }
