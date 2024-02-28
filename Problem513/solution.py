@@ -4,7 +4,7 @@ Let n be the number of nodes in the tree and h be the height of the tree
 Time Complexity: O(n)
 Space Complexity: O(h)
 
-A simple and easy recursive solution.
+A recursive solution using dfs.
 
 """
 
@@ -15,19 +15,26 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
-        if p is None and q is None:
-            return True
-        elif p is None or q is None:
-            return False
+
+    value:int = 0
+    currentLevel:int = 0
+
+    def dfs(self, node:TreeNode, level = 0):
+        if node is None:
+            return
     
-        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right) and p.val == q.val
+        if level > self.currentLevel:
+            self.value = node.val
+            self.currentLevel = level
+
+        self.dfs(node.left, level+1)
+        self.dfs(node.right, level+1)
+    
+    def findBottomLeftValue(self, root: TreeNode) -> int:
+        self.value = root.val
+        self.dfs(root)
+        return self.value
     
 sol:Solution = Solution()
-p = TreeNode(1, TreeNode(2), TreeNode(3))
-q = TreeNode(1, TreeNode(2), TreeNode(3))
-print(sol.isSameTree(p, q))
-
-p = TreeNode(1, None, TreeNode(2))
-q = TreeNode(1, TreeNode(2), None)
-print(sol.isSameTree(p, q))
+root = TreeNode(1, TreeNode(2, TreeNode(4), None), TreeNode(3, TreeNode(5, TreeNode(7, None)), TreeNode(6)))
+print(sol.findBottomLeftValue(root))
