@@ -1,33 +1,20 @@
 """ 
-Let n be the number of nodes in the tree and h be the height of the tree
+Let n be the size of s
 
 Time Complexity: O(n)
-Space Complexity: O(h)
+Space Complexity: O(n)
 
-A simple and easy recursive solution.
+A simple and easy solution in python counting the ammount of 0's and 1's.
 
 """
 
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
 class Solution:
-    def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
-        if p is None and q is None:
-            return True
-        elif p is None or q is None:
-            return False
-    
-        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right) and p.val == q.val
+    def maximumOddBinaryNumber(self, s: str) -> str:
+        c1 = s.count('1')
+        c0 = s.count('0')
+        ans = '1' * (c1 - 1) + '0' * c0 + '1'
+        return ans
     
 sol:Solution = Solution()
-p = TreeNode(1, TreeNode(2), TreeNode(3))
-q = TreeNode(1, TreeNode(2), TreeNode(3))
-print(sol.isSameTree(p, q))
-
-p = TreeNode(1, None, TreeNode(2))
-q = TreeNode(1, TreeNode(2), None)
-print(sol.isSameTree(p, q))
+s = "00011"
+print(sol.maximumOddBinaryNumber(s))
