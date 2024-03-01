@@ -2,13 +2,13 @@
 Let n be the number of nodes in the tree and h be the height of the tree
 
 Time Complexity: O(n)
-Space Complexity: O(h)
+Space Complexity: O(n) -> values vector use O(h) but the worst case in call stack is O(n)
 
 A recursive solution using dfs.
-
 */
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
 struct TreeNode {
@@ -22,32 +22,34 @@ struct TreeNode {
 
 class Solution {
 public:
-    void dfs(TreeNode* node, int level = 0){
-        if(node == nullptr){return;}  
-        if(level > currentLevel){
-            currentLevel = level;
-            value = node->val;
+    void solver(TreeNode* node, int level = 0){
+        int sign = -2*(level%2)+1;
+        if(node == nullptr || solution == false){return;}
+        if(node->val%2 == level%2){
+            solution = false;
+            return;
         }
-        dfs(node->left, level+1);
-        dfs(node->right, level+1);
+        if(values.size() <= level){values.push_back(node->val);}
+        else if(values[level]*sign < node->val*sign){values[level] = node->val;}
+        else{solution = false;}
+        solver(node->left, level+1);
+        solver(node->right, level+1);
     }
-
-    int findBottomLeftValue(TreeNode* root) {
-        value = root->val;
-        dfs(root);
-        return value;
+    bool isEvenOddTree(TreeNode* root) {
+        solver(root);
+        return solution;
     }
 private:
-    int value = 0;
-    int currentLevel = 0;
+    bool solution = true;
+    std::vector<int> values = {};
 };
 
 int main(){
 
     Solution sol = Solution();
-    TreeNode* root = new TreeNode(1, new TreeNode(2, new TreeNode(4), nullptr), new TreeNode(3, new TreeNode(5, new TreeNode(7), nullptr), new TreeNode(6)));
+    TreeNode* root = new TreeNode(5, new TreeNode(4, new TreeNode(3), new TreeNode(5)), new TreeNode(2, new TreeNode(7), nullptr));
 
-    cout << sol.findBottomLeftValue(root) << endl;
+    cout << sol.isEvenOddTree(root) << endl;
 
     delete root->right;
     delete root->left;
