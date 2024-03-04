@@ -1,55 +1,49 @@
 /* 
-Let n be the number of nodes in the tree and h be the height of the tree
+Let n be tokens.size()
 
-Time Complexity: O(n)
-Space Complexity: O(h)
+Time Complexity: O(nlog(n))
+Space Complexity: O(1)
 
-A simple and easy recursive solution.
+A solution using greedy, two pointers and sort.
 
 */
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
-
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-};
 
 class Solution {
 public:
-    bool isSameTree(TreeNode* p, TreeNode* q){
-        if(p == nullptr && q == nullptr){
-            return true;
-        }else if(p == nullptr || q == nullptr){
-            return false;
+    int bagOfTokensScore(std::vector<int>& tokens, int power) {
+        std::sort(tokens.begin(), tokens.end());
+        int pts = 0;
+        int maxPts = 0;
+        int p = 0;
+        int q = tokens.size() - 1;
+
+        for(int i = 0; i < tokens.size(); i++){
+            if(tokens[p] <= power){
+                power -= tokens[p];
+                p++;
+                pts++;
+                maxPts = max(maxPts, pts);
+                continue;
+            }else if(pts > 0){
+                power += tokens[q];
+                q -= 1;
+                pts -= 1;
+                continue;
+            }
+            break;
         }
-        return p->val == q->val && isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+        return maxPts;
     }
 };
 
 int main(){
-
     Solution sol = Solution();
-    TreeNode* p = new TreeNode(1, new TreeNode(2), new TreeNode(3));
-    TreeNode* q = new TreeNode(1, new TreeNode(2), new TreeNode(3));
-
-    cout << sol.isSameTree(p, q) << endl;
-
-    p = new TreeNode(1, new TreeNode(2), nullptr);
-    q = new TreeNode(1, nullptr, new TreeNode(2));
-
-    cout << sol.isSameTree(p, q) << endl;
-
-    delete p->right;
-    delete p->left;
-    delete p;
-    delete q->right;
-    delete q->left;
-    delete q;
-
+    vector<int> tks = {100,200,300,400};
+    int pwr = 200;
+    cout << sol.bagOfTokensScore(tks, pwr) << endl;
 }
