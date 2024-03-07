@@ -4,7 +4,7 @@ Let n be the number of nodes in the list
 Time Complexity: O(n)
 Space Complexity: O(1)
 
-A simple and easy two pointers solution
+A simple and easy two pointers solution.
 
 """
 
