@@ -1,10 +1,10 @@
 /* 
-Let n be s.length
+Let n be the number of nodes in the list
 
 Time Complexity: O(n)
 Space Complexity: O(1)
 
-A solution using two pointers algorithm.
+A simple and easy two pointers solution.
 */
 
 function ListNode(val, next) {
