@@ -7,27 +7,28 @@ Space Complexity: O(1)
 A solution using two pointers algorithm.
 */
 
+function ListNode(val, next) {
+    this.val = (val===undefined ? 0 : val)
+    this.next = (next===undefined ? null : next)
+}
+
 /**
- * @param {string} s
- * @return {number}
+ * @param {ListNode} head
+ * @return {ListNode}
  */
-var minimumLength = function(s) {
-    let p = 0;
-    let q = s.length-1;
-    for(let i = 0; i < s.length; i++){
-        if(s[p] == s[q] && q > p){
-            let letter = s[p]
-            p += 1;
-            q -= 1;
-            while((s[p] == letter || s[q] == letter) && q > p){
-                if(s[p] == letter){p += 1;}
-                if(s[q] == letter){q -= 1;}
-                if(q == p && s[p] == letter){p += 1;}
-            }
-        }else{break;}
+var middleNode = function(head) {
+    let p = head;
+    let q = head;
+    while(p.next != null){
+        if(p.next.next != null){
+            p = p.next.next;
+        }else{
+            p = p.next;
+        }
+        q = q.next;
     }
-    return q - p + 1;
+    return q;
 };
 
-let str = 'aabccabba'
-console.log(minimumLength(str))
+let p = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5, new ListNode(6, null))))))
+console.log(middleNode(p))

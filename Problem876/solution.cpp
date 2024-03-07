@@ -1,55 +1,49 @@
 /* 
-Let n be the number of nodes in the tree and h be the height of the tree
+Let n be the number of nodes in the list
 
 Time Complexity: O(n)
-Space Complexity: O(h)
+Space Complexity: O(1)
 
-A simple and easy recursive solution.
+A simple and easy two pointers solution.
 
 */
 
 #include <iostream>
 using namespace std;
 
-struct TreeNode {
+struct ListNode {
     int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
-
+ 
 class Solution {
 public:
-    bool isSameTree(TreeNode* p, TreeNode* q){
-        if(p == nullptr && q == nullptr){
-            return true;
-        }else if(p == nullptr || q == nullptr){
-            return false;
+    ListNode* middleNode(ListNode* head) {
+        ListNode* p = head;
+        ListNode* q = head;
+        while(p->next != nullptr){
+            if(p->next->next != nullptr){
+                p = p->next->next;
+            }else{
+                p = p->next;
+            }
+            q = q->next;
         }
-        return p->val == q->val && isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+        return q;
     }
 };
 
 int main(){
 
     Solution sol = Solution();
-    TreeNode* p = new TreeNode(1, new TreeNode(2), new TreeNode(3));
-    TreeNode* q = new TreeNode(1, new TreeNode(2), new TreeNode(3));
+    ListNode* p = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5, new ListNode(6))))));
 
-    cout << sol.isSameTree(p, q) << endl;
+    cout << sol.middleNode(p)->val << endl;
 
-    p = new TreeNode(1, new TreeNode(2), nullptr);
-    q = new TreeNode(1, nullptr, new TreeNode(2));
-
-    cout << sol.isSameTree(p, q) << endl;
-
-    delete p->right;
-    delete p->left;
+    delete p->next;
     delete p;
-    delete q->right;
-    delete q->left;
-    delete q;
 
 }
