@@ -35,6 +35,6 @@ class Solution:
         return ans.keys()
     
 sol:Solution = Solution()
-order:str = "bcafg"
-s:str = "abcd"
-print(sol.customSortString(order, s))
+nums1:list = [4,9,5]
+nums2:list = [9,4,9,8,4]
+print(sol.intersection(nums1, nums2))
