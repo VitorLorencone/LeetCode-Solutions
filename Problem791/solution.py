@@ -1,26 +1,35 @@
 """
+Let n be len(s)
 
-Time Complexity: O(nlog(n))
-Space Complexity: O(1)
+Time Complexity: O(n)
+Space Complexity: O(n)
 
-Solution using the python sort, with n*log(n) complexity and greedy algorithm in O(n).
-It was improved in the .cpp file
+Solution using hash table for counting and sorting with three O(n) loops
 
 """
 
 class Solution:
-    def largestPerimeter(self, nums: list[int]) -> int:
-        s = 0
-        nums.sort()
-        
-        for i in range(len(nums)-2):
-            for j in range(len(nums)-i-1):
-                s += nums[j]
-            if s > nums[-i-1]:
-                return s+nums[-i-1]
-            s = 0
-        return -1
+    def customSortString(self, order: str, s: str) -> str:
+        letters:dict = {}
+        ans:str = ""
+        for i in s:
+            if i in letters:
+                letters[i] += 1
+            else:
+                letters[i] = 1
+        for i in order:
+            while i in letters:
+                ans += i
+                letters[i] -= 1
+                if letters[i] == 0: del letters[i]
+        for i in s:
+            while i in letters:
+                ans += i
+                letters[i] -= 1
+                if letters[i] == 0: del letters[i]
+        return ans
     
 sol:Solution = Solution()
-prob:list[int] = [1,12,1,2,5,50,3]
-print(sol.largestPerimeter(prob))
+order:str = "bcafg"
+s:str = "abcd"
+print(sol.customSortString(order, s))
