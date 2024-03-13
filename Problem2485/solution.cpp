@@ -1,33 +1,36 @@
 /* 
 
-Time Complexity: O(n)
+Time Complexity: O(log(n))
 Space Complexity: O(1)
 
-A very simple solution calculating the max sum and the subtracting each value in nums
-this way, the remaining number at the end of the for loop is our answer.
+A very simple solution using binary search.
 
 */
 
 #include <iostream>
-#include <vector>
 
 class Solution {
 public:
-    int missingNumber(std::vector<int>& nums) {
-        int n = nums.size();
-        int total = (n*(n+1))/2;
-        for(int i = 0; i < n; i++){
-            total -= nums[i];
+    int pivotInteger(int n) {
+        int left = 1;
+        int right = n;
+        while (left <= right){
+            int middle = (left+right) / 2;
+            int sumLeft = (middle+1)*middle/2;
+            int sumRight = (middle+n)*(n-middle+1)/2;
+            if(sumLeft == sumRight){return middle;}
+            else if(sumLeft < sumRight){left = middle+1;}
+            else{right = middle-1;}
         }
-        return total;
+        return -1;
     }
 };
 
 int main(){
 
     Solution sol = Solution();
-    std::vector<int> prob = {9,6,4,2,3,5,7,0,1};
+    int n = 8;
 
-    std::cout << sol.missingNumber(prob) << std::endl;
+    std::cout << sol.pivotInteger(8) << std::endl;
 
 }
