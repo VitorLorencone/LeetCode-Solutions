@@ -4,7 +4,7 @@ Let n be len(nums1) == len(nums[2])
 Time Complexity: O(nlog(n))
 Space Complexity: O(n)
 
-Solution using hash table for counting and sorting with nlog(n) algorithm
+Solution using hash table for counting and sorting with nlog(n) algorithm.
 
 """
 
