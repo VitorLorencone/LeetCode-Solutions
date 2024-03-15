@@ -4,7 +4,7 @@ Let n be the size of the list nums
 Time Complexity: O(n)
 Space Complexity: O(n) -> Including the vector "ans";
 
-Simple solution with two for loops calculating left and right multiplications.
+Simple solution with two for loops calculating left and right multiplications
 
 */
 
