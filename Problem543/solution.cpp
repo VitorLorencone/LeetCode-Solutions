@@ -4,7 +4,7 @@ Let n be the number of nodes in the tree
 Time Complexity: O(n)
 Space Complexity: O(n)
 
-Solution with a recursive dfs.
+Solution with a recursive dfs
 
 */
 
