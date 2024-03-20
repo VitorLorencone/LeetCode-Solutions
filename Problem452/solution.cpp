@@ -4,7 +4,7 @@ Let n be the size of the list *points*
 Time Complexity: O(n*log(n))
 Space Complexity: O(1)
 
-Simple solution with pre-processing sort and greedy algorithm
+Simple solution with pre-processing sort and greedy algorithm.
 
 */
 
