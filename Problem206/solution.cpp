@@ -9,31 +9,40 @@ Simple solution with pre-processing sort and greedy algorithm.
 */
 
 #include <iostream>
-#include <vector>
-#include <algorithm>
 using namespace std;
+
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+ };
+ 
 
 class Solution {
 public:
-    int findMinArrowShots(vector<vector<int>>& points) {
-        sort(points.begin(), points.end());
+    ListNode* reverseList(ListNode* head) {
+        ListNode* ans = nullptr;
+        ListNode* p = head;
 
-        int arrows = 0;
-        vector<int> lastPoint = {-1, -1};
-        for(int i = 0; i < points.size(); i++){
-            if(points[i][0] >= lastPoint[0] && points[i][0] <= lastPoint[1]){
-                lastPoint[1] = min(lastPoint[1], points[i][1]);
-                continue;
-            }
-            arrows++;
-            lastPoint = points[i];
+        while(p != nullptr){
+            ans = new ListNode(p->val, ans);
+            p = p->next;
         }
-        return arrows;
+
+        return ans;
     }
 };
 
 int main(){
     Solution sol = Solution();
-    vector<vector<int>> p = {{1,2},{2,3},{3,4},{4,5}};
-    cout << sol.findMinArrowShots(p);
+    ListNode* head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
+    ListNode* ans = sol.reverseList(head);
+    ListNode* p = ans;
+
+    while(p != nullptr){
+        cout << p->val << " ";
+        p = p->next;
+    }
 }
