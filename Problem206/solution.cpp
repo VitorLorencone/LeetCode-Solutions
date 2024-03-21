@@ -1,10 +1,8 @@
 /* 
-Let n be the size of the list *points*
+Let n be the size of the linked list *head*
 
-Time Complexity: O(n*log(n))
-Space Complexity: O(1)
-
-Simple solution with pre-processing sort and greedy algorithm.
+Time Complexity: O(n)
+Space Complexity: O(n)
 
 */
 
