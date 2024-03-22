@@ -2,7 +2,7 @@
 Let n be the size of the linked list *head*
 
 Time Complexity: O(n)
-Space Complexity: O(n)
+Space Complexity: O(1)
 
 */
 
@@ -20,27 +20,39 @@ struct ListNode {
 
 class Solution {
 public:
-    ListNode* reverseList(ListNode* head) {
-        ListNode* ans = nullptr;
-        ListNode* p = head;
+    bool isPalindrome(ListNode* head) {
+        if(!head || !head->next) return true;
 
-        while(p != nullptr){
-            ans = new ListNode(p->val, ans);
+        ListNode* middle = head;
+        ListNode* p = head;
+        ListNode* prev = NULL;
+
+        while(middle != nullptr && middle->next != nullptr){
+            middle = middle->next->next;
+            ListNode* temp = p->next;
+            p->next = prev;
+            prev = p;
+            p = temp;
+        }
+
+        if(middle){
             p = p->next;
         }
 
-        return ans;
+        while(prev && p){
+            if(prev->val != p->val){
+                return false;
+            }
+            prev = prev->next;
+            p = p->next;
+        }
+
+        return true;
     }
 };
 
 int main(){
     Solution sol = Solution();
-    ListNode* head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
-    ListNode* ans = sol.reverseList(head);
-    ListNode* p = ans;
-
-    while(p != nullptr){
-        cout << p->val << " ";
-        p = p->next;
-    }
+    ListNode* head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(2, new ListNode(1)))));
+    cout << sol.isPalindrome(head);
 }
