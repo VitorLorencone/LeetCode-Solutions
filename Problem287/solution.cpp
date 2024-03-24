@@ -1,58 +1,39 @@
 /* 
-Let n be the size of the linked list *head*
+Let n be the size of *nums*
 
 Time Complexity: O(n)
 Space Complexity: O(1)
 
+Two pointer solution
+
 */
 
 #include <iostream>
-using namespace std;
-
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
- };
- 
+#include <vector>
 
 class Solution {
 public:
-    bool isPalindrome(ListNode* head) {
-        if(!head || !head->next) return true;
+    int findDuplicate(std::vector<int>& nums) {
+        int slow = nums[0];
+        int fast = nums[0];
 
-        ListNode* middle = head;
-        ListNode* p = head;
-        ListNode* prev = NULL;
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while (slow != fast);
 
-        while(middle != nullptr && middle->next != nullptr){
-            middle = middle->next->next;
-            ListNode* temp = p->next;
-            p->next = prev;
-            prev = p;
-            p = temp;
+        slow = nums[0];
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
         }
 
-        if(middle){
-            p = p->next;
-        }
-
-        while(prev && p){
-            if(prev->val != p->val){
-                return false;
-            }
-            prev = prev->next;
-            p = p->next;
-        }
-
-        return true;
+        return slow;
     }
 };
 
 int main(){
     Solution sol = Solution();
-    ListNode* head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(2, new ListNode(1)))));
-    cout << sol.isPalindrome(head);
+    std::vector<int> nums = {1,2,6,5,4,3,2};
+    std::cout << sol.findDuplicate(nums);
 }
