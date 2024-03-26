@@ -4,7 +4,7 @@ Let n be the size of *nums*
 Time Complexity: O(n)
 Space Complexity: O(1)
 
-Two pointer solution
+Two pointer solution.
 
 */
 
