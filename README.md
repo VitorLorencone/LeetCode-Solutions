@@ -1,6 +1,6 @@
 # LeetCode Solutions 🔎
 
-Some LeetCode problems I solve (almost) daily.
+Some LeetCode problems I solve.
 
 Daily interview problems for practice!!
 
