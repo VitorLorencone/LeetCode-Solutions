@@ -4,7 +4,7 @@ You are given a string `s` of lowercase English letters and a 2D integer array `
 
 Shifting a character **forward** means replacing it with the **next** letter in the alphabet (wrapping around so that `'z'` becomes `'a'`). Similarly, shifting a character **backward** means replacing it with the **previous** letter in the alphabet (wrapping around so that `'a'` becomes `'z'`).
 
-Return *the final string after all such shifts to `s` are applied.*
+Return *the final string after all such shifts to `s` are applied*.
 
 **Example 1:**
 
