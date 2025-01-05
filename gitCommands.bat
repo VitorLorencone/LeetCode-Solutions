@@ -1,9 +1,22 @@
-echo Do you want to execute the commands? (y/n)
-set /p confirm=
-if /i not "%confirm%"=="y" (
-    echo Canceling.
-    exit /b
-)
+@echo off
+
+SET choice=
+SET /p choice=Do you want to execute the commands? (y/n): 
+
+IF NOT '%choice%'=='' SET choice=%choice:~0,1%
+IF '%choice%'=='Y' GOTO yes
+IF '%choice%'=='y' GOTO yes
+IF '%choice%'=='N' GOTO no
+IF '%choice%'=='n' GOTO no
+IF '%choice%'=='' GOTO no
+ECHO "%choice%" is not valid
+exit
+
+:no
+ECHO Canceling
+EXIT
+
+:yes
 
 REM cd /d C:\path if needed
 
