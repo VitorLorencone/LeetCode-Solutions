@@ -1,5 +1,5 @@
 """ 
-Let n be the size of `s`
+Let n be the size of the string `s`
 
 Time Complexity: O(n^2)
 Space Complexity: O(n)
