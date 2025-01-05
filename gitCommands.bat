@@ -1,3 +1,5 @@
+REM Commands Automated
+
 @echo off
 
 SET choice=
