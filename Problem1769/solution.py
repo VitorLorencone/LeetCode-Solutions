@@ -1,5 +1,5 @@
 """ 
-Let n be the size of the string `boxe`
+Let n be the size of the string `boxes`
 
 Time Complexity: O(n)
 Space Complexity: O(n)
