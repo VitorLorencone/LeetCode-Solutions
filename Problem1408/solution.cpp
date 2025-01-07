@@ -3,7 +3,7 @@
 Time Complexity: O(n^2)
 Space Complexity: O(n)
 
-A simples solution in cpp using KMP algorithm.
+A simples solution in cpp using KMP algorithm
 
 */
 
