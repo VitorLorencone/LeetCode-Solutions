@@ -5,7 +5,7 @@ let m be the average length of each word
 Time Complexity: O(n^2*m)
 Space Complexity: O(1)
 
-An easy brute force solution in python
+An easy brute force solution in python.
 
 """
 
