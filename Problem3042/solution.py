@@ -1,6 +1,6 @@
 """
 let n be len(words)
-let m be the average length of each word
+let m be the average length of each `word`
 
 Time Complexity: O(n^2*m)
 Space Complexity: O(1)
