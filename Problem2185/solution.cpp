@@ -1,10 +1,9 @@
 /* 
+Let `n` be the length of `words`
+Let `m` be the length of `pref`
 
-Time Complexity: O(log(n))
+Time Complexity: O(n*m)
 Space Complexity: O(1)
-
-A very simple solution using binary search.
-
 */
 
 #include <iostream>
