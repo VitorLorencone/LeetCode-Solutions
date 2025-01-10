@@ -1,10 +1,11 @@
 """
+let `w1` be the size of `words1`
+let `w2` be the size of `words2`
+let `n` be the average amount of letter in words from `words1`
+let `m` be the average amount of letter in words from `words2`
 
-Time Complexity: O(n)
-Space Complexity: O(n)
-
-Solution using deque like a queue for O(1) append and pop and to keep elements in order.
-The ideia uses a waiting queue, to keep the other sign elements in there, while the solution comes up in order.
+Time Complexity: O(w1*n + w2*m)
+Space Complexity: O(w1)
 
 """
 
