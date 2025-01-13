@@ -1,5 +1,5 @@
 """
-let n be the length of `s`
+let n be the length of string `s`
 
 Time Complexity: O(n)
 Space Complexity: O(1)
