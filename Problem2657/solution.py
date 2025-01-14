@@ -1,5 +1,5 @@
 """
-let n be the length of string `A`
+let n be the length of list `A`
 
 Time Complexity: O(n)
 Space Complexity: O(n)
