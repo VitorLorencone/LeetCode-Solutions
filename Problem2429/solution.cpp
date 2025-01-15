@@ -1,10 +1,9 @@
 /* 
-Let n be the size of the list nums
 
-Time Complexity: O(n)
-Space Complexity: O(n)
+Time Complexity: O(32) = O(1)
+Space Complexity: O(1)
 
-A solution using hash map for counting.
+It iterates over the number of bits, thus it can be only beetwen 1 and 32
 
 */
 
