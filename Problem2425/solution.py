@@ -1,10 +1,9 @@
 """
-let k be len(meetings)
+let m be the length of `nums1`
+let n be the length of `nums2`
 
-Time Complexity: O(klog(k))
-Space Complexity: O(n)
-
-Solution using two python heapq for keeping track of many values that needed to be in an order.
+Time Complexity: O(n + m)
+Space Complexity: O(1)
 
 """
 
