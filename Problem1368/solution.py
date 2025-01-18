@@ -1,5 +1,5 @@
 """
-let `grid` be an `m x n` matrix input
+let `grid` be an `m x n` matrix input.
 
 Time Complexity: O(n * m)
 Space Complexity: O(n * m)
