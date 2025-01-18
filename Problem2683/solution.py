@@ -1,5 +1,5 @@
 """
-let n be the length of `derived`
+let n be the length of `derived`.
 
 Time Complexity: O(n)
 Space Complexity: O(1)
