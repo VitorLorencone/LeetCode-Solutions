@@ -1,6 +1,5 @@
 """
-
-let grid be an mxn matrix.
+let grid be an m x n matrix.
 
 Time Complexity: O(n*m)
 Space Complexity: O(n+m)
