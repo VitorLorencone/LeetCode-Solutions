@@ -1,10 +1,8 @@
 /* 
-
 Let n be the size of `nums`
 
 Time Complexity: O(n^2)
 Space Complexity: O(n)
-
 */
 
 function minimumOperations(nums: number[]): number {
