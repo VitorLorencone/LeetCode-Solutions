@@ -35,9 +35,7 @@ git checkout main
 git merge %message%
 git push
 
-git tag archieve/%message% %message%
 git branch -d %message%
 git push
-git push --tags
 
 echo Commands executed with success
