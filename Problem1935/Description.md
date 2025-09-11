@@ -4,8 +4,6 @@ There is a malfunctioning keyboard where some letter keys do not work. All other
 
 Given a string ``text`` of words separated by a single space (no leading or trailing spaces) and a string ``brokenLetters`` of all **distinct** ``letter`` keys that are broken, return *the **number of words** in text you can fully type using this keyboard*.
 
-**Assume the environment does not allow you to store 64-bit integers (signed or unsigned).**
-
 **Example 1:**
 
 > **Input:** text = "hello world", brokenLetters = "ad"  
